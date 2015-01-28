@@ -6,8 +6,8 @@
 // @include     https://learn.sait.ca/
 // @include     https://learn.sait.ca/d2l/lp/auth/login/loginFailed*
 // @include     https://learn.sait.ca/?*
-// @version     2.1.2
-// @downloadURL https://raw.githubusercontent.com/Power-Fusion/Sait-sama/master/Sait-sama.user.js
+// @version     2.12
+// @downloadURL https://github.com/Power-Fusion/Sait-sama/raw/master/Sait-sama.user.js
 // @updateURL   https://raw.githubusercontent.com/Power-Fusion/Sait-sama/master/Sait-sama.meta.js
 // @grant       none
 // ==/UserScript==
