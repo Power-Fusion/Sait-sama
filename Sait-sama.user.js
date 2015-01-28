@@ -1,34 +1,31 @@
 // ==UserScript==
 // @name        Sait-sama
+// @version     2.1.2
 // @namespace   Power-Fusion
 // @description Sait Login Weab
-// @icon        http://a.pomf.se/tdslwk.png
-// @include     https://learn.sait.ca/
-// @include     https://learn.sait.ca/d2l/lp/auth/login/loginFailed*
-// @include     https://learn.sait.ca/?*
-// @version     2.12
-// @downloadURL https://github.com/Power-Fusion/Sait-sama/raw/master/Sait-sama.user.js
+// @match       https://learn.sait.ca/
+// @match       https://learn.sait.ca/d2l/lp/auth/login/loginFailed*
+// @match       https://learn.sait.ca/?*
 // @updateURL   https://raw.githubusercontent.com/Power-Fusion/Sait-sama/master/Sait-sama.meta.js
-// @grant       none
+// @downloadURL https://raw.githubusercontent.com/Power-Fusion/Sait-sama/master/Sait-sama.user.js
+// @icon        http://a.pomf.se/tdslwk.png
 // ==/UserScript==
 
-//===============[ Stuff ]==================
-// Image cache system
-// Image updating from settings
-// Settings
-// Image aspect ratio responsive sizing
-// Clean up
-// Formating
-// Script updates
-// old favico http://a.pomf.se/xpchdp.png
-// =========================================
-
-// ***** GET THIS FONT *****
-// Saits server doesnt allow cross files
-// So to see the correct font, download it
-// https://a.pomf.se/na3ce.TTF
-
-//Redirect fix
+/*
+* Image cache system
+* Image updating from settings
+* Settings
+* Image aspect ratio responsive sizing
+* Clean up
+* Formating
+* Script updates
+* old favico http://a.pomf.se/xpchdp.png
+* ***** GET THIS FONT *****
+* Saits server doesnt allow cross files
+* So to see the correct font, download it
+* https://a.pomf.se/na3ce.TTF
+*/
+//--- Redirect fix
 redirectToPage("https://learn.sait.ca/d2l/lp/auth/login/loginFailed*", "https://learn.sait.ca/");
 redirectToPage("https://learn.sait.ca/?*", "https://learn.sait.ca/");
 function redirectToPage(page1, page2){
@@ -37,7 +34,7 @@ if(window.location.href.indexOf(page1) != -1){
   }
 }
 
-//fav icon change - oh fuck it works
+//--- fav icon change - oh fuck it works
 var favicon_link_html = document.createElement('link');
 favicon_link_html.rel = 'icon';
 favicon_link_html.href = 'http://a.pomf.se/tdslwk.png';
@@ -48,7 +45,7 @@ document.getElementsByTagName('head')[0].appendChild( favicon_link_html );
 }
 catch(e) { } 
 
-// Image urls to be randomized. Maybe Ill find a way to lable them, and size better.
+//--- Image urls to be randomized. Maybe Ill find a way to lable them, and size better.
 var images = ['http://a.pomf.se/whovbh.png', 
 			  'http://safebooru.org//images/1107/913229aa395f58bc2ec16c0152b0b67ded3a3384.png?1149712',
 			  'http://safebooru.org//images/1089/34a5d6c7b65b9a85667656abb8e205b2f30f618f.png?1129949',
@@ -86,7 +83,7 @@ var images = ['http://a.pomf.se/whovbh.png',
         'http://a.pomf.se/ykcohx.png',
 			  'http://safebooru.org//images/1054/3692147a775a82873a0e7dce1809e99a7f8ebe5f.png?1092402'];
 
-//Titles to be randomized
+//--- Titles to be randomized
 var titles = ['Be Gentle',
               'Notice me Senpai',
               'Turn Down for Senpai',
@@ -102,7 +99,7 @@ var titles = ['Be Gentle',
               'Perflat Get'];
 
 var css = 
-//Item Removal. Also fuck saits STUPID use of a table to contain nearly all the login page. Fuck heads.
+//--- Item Removal. Also fuck saits STUPID use of a table to contain nearly all the login page. Fuck heads.
 "body > table:nth-child(1){display:none !important;}" +
 "body > p:nth-child(3){display:none !important;}" +
 "body > br:nth-child(2){display:none !important;}" +
@@ -126,7 +123,7 @@ var css =
 "body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(3) > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > strong:nth-child(1) {display:none !important;}" +
 "body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(3) > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > strong:nth-child(1) {display:none !important;}" +  
 
-//Images and changes
+//--- Images and changes
 "html {background: #111111 !important;}" +
 "body {background: #111111 !important; font-family:'kroeger 05_55' !important; }" +
 "body {height: 100%;}" +
@@ -140,17 +137,17 @@ var css =
 "body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3){width: 400px;}" +
 "body > table:nth-child(4) {margin-left: 18%;}" +
 "body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(3){background-color: #111111;}" +
-//"body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) { position: relative; top: 50%; -webkit-transform: translateY(25%); -ms-transform: translateY(25%); transform: translateY(25%);}" +
+//--- "body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) { position: relative; top: 50%; -webkit-transform: translateY(25%); -ms-transform: translateY(25%); transform: translateY(25%);}" +
 'body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) { background:url('+ images[Math.floor(Math.random() * images.length)]+') center no-repeat !important; background-size:contain !important; image-rendering: optimizeQuality;}' +
 "body > table:nth-child(4) { position: relative; top: 30%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%);}" +
 
-//placeholder color
+//--- placeholder color
 "::-webkit-input-placeholder {color: #8FD8D8; opacity: 1;}" +
 ":-moz-placeholder { /* Firefox 18- */color: #8FD8D8; opacity: 1;}" +
 "::-moz-placeholder {  /* Firefox 19+ */color: #8FD8D8; opacity: 1;}" +
 ":-ms-input-placeholder {color: #8FD8D8; opacity: 1;}" +
     
-//fadein
+//--- fadein
 "body > table:nth-child(4) { -webkit-animation: fadein 3s; -moz-animation: fadein 3s; -ms-animation: fadein 3s; -o-animation: fadein 3s; animation: fadein 3s;}" +
 "@keyframes fadein { from { opacity: 0; } to { opacity: 1; }}" +
 "@-moz-keyframes fadein { from { opacity: 0; } to { opacity: 1; }}" +
@@ -158,7 +155,7 @@ var css =
 "@-ms-keyframes fadein { from { opacity: 0; } to { opacity: 1; }}" +
 "@-o-keyframes fadein { from { opacity: 0; } to { opacity: 1; }}";
 
-//Append to style + title
+//--- Append to style + title
 document.title = String(titles[Math.floor(Math.random() * titles.length)]);
 var stylesheet = document.createElement("style");
 stylesheet.type = "text/css";
@@ -170,7 +167,7 @@ if (stylesheet.styleSheet) {
 	}
 (document.head || document.getElementsByTagName("head")[0]).appendChild(stylesheet);
 
-//Add placeholders to the input bars AFTER domload
+//--- Add placeholders to the input bars AFTER domload
 window.addEventListener('load', insertData, false);
 
 function insertData() {
