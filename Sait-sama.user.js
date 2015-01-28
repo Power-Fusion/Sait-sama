@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Sait-sama
-// @version     2.1.5
+// @version     2.1.6
 // @namespace   Power-Fusion
 // @description Sait Login Weab
 // @match       https://learn.sait.ca/
@@ -9,34 +9,26 @@
 // @updateURL   https://raw.githubusercontent.com/Power-Fusion/Sait-sama/master/Sait-sama.meta.js
 // @downloadURL https://raw.githubusercontent.com/Power-Fusion/Sait-sama/master/Sait-sama.user.js
 // @icon        http://a.pomf.se/tdslwk.png
-// @grant       GM_getValue
-// @grant       GM_setValue
+// @grant       none
 // ==/UserScript==
 
 /*
 * Image cache system
 * Image updating from settings
 * Settings
-* Image aspect ratio responsive sizing
+* Image aspect ratio responsive sizing - maybe
 * Clean up
 * Formating
 * Script updates
-* old favico http://a.pomf.se/xpchdp.png
-* ***** GET THIS FONT *****
-* Saits server doesnt allow cross files
-* So to see the correct font, download it
+* This is a link to the font if you missed it.
 * https://a.pomf.se/na3ce.TTF
 */
 
-// Run once per install font checker. Sorry I can't think of a better way to do this.
-var alreadyRun = GM_getValue ("alreadyRun",  false);
-if ( ! alreadyRun) {
-    GM_setValue ("alreadyRun", true);
-    var fonter = doesFontExist("kroeger 05_55");
-    if(fonter == true){
+//Font checker. Sorry I can't think of a better way to do this.
+var fonter = doesFontExist("kroeger 05_55");
+if(fonter == true){
     alert ("kroeger 05_55 Font is missing!\nPlease install it first!\nPress okay to load the font.");
     window.location.href='https://a.pomf.se/na3ce.TTF';
-    }
 }
 
 //--- Redirect fix
@@ -44,7 +36,7 @@ if(window.location.href.match(/[?]/)){
     window.location.href = "https://learn.sait.ca/";
 }
 
-//--- fav icon change - oh fuck it works
+//--- fav icon change - oh fuck it works - I wanna clean it up?
 var favicon_link_html = document.createElement('link');
 favicon_link_html.rel = 'icon';
 favicon_link_html.href = 'http://a.pomf.se/tdslwk.png';
@@ -147,7 +139,6 @@ var css =
 "body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3){width: 400px;}" +
 "body > table:nth-child(4) {margin-left: auto; margin-right: auto;}" +
 "body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(3){background-color: #111111;}" +
-//--- "body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) { position: relative; top: 50%; -webkit-transform: translateY(25%); -ms-transform: translateY(25%); transform: translateY(25%);}" +
 'body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) { background:url('+ images[Math.floor(Math.random() * images.length)]+') center no-repeat !important; background-size:contain !important; image-rendering: optimizeQuality;}' +
 "body > table:nth-child(4) { position: relative; top: 30%; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%);}" +
 
