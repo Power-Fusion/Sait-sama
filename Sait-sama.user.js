@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name        Sait-sama
-// @version     2.1.3
+// @version     2.1.4
 // @namespace   Power-Fusion
 // @description Sait Login Weab
 // @match       https://learn.sait.ca/
-// @match       https://learn.sait.ca/d2l/lp/auth/login/loginFailed*
 // @match       https://learn.sait.ca/?*
+// @match       https://learn.sait.ca/d2l/lp/auth/login/loginFailed*
 // @updateURL   https://raw.githubusercontent.com/Power-Fusion/Sait-sama/master/Sait-sama.meta.js
 // @downloadURL https://raw.githubusercontent.com/Power-Fusion/Sait-sama/master/Sait-sama.user.js
 // @icon        http://a.pomf.se/tdslwk.png
@@ -26,12 +26,8 @@
 * https://a.pomf.se/na3ce.TTF
 */
 //--- Redirect fix
-redirectToPage("https://learn.sait.ca/d2l/lp/auth/login/loginFailed*", "https://learn.sait.ca/");
-redirectToPage("https://learn.sait.ca/?*", "https://learn.sait.ca/");
-function redirectToPage(page1, page2){
-if(window.location.href.indexOf(page1) != -1){
-    window.location.href = page2;
-  }
+if(window.location.href.match(/[?]/)){
+    window.location.href = "https://learn.sait.ca/";
 }
 
 //--- fav icon change - oh fuck it works
@@ -135,7 +131,7 @@ var css =
 "#Username {width: 302px;color: #8FD8D8 !important;}" +
 "#Password {width: 302px;color: #8FD8D8 !important; }" +
 "body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3){width: 400px;}" +
-"body > table:nth-child(4) {margin-left: 18%;}" +
+"body > table:nth-child(4) {margin-left: auto; margin-right: auto;}" +
 "body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(3){background-color: #111111;}" +
 //--- "body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) { position: relative; top: 50%; -webkit-transform: translateY(25%); -ms-transform: translateY(25%); transform: translateY(25%);}" +
 'body > table:nth-child(4) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) { background:url('+ images[Math.floor(Math.random() * images.length)]+') center no-repeat !important; background-size:contain !important; image-rendering: optimizeQuality;}' +
