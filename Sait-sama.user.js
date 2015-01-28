@@ -26,7 +26,7 @@
 
 //Font checker. Sorry I can't think of a better way to do this.
 var fonter = doesFontExist("kroeger 05_55");
-if(fonter == true){
+if(fonter == false){
     alert ("kroeger 05_55 Font is missing!\nPlease install it first!\nPress okay to load the font.");
     window.location.href='https://a.pomf.se/na3ce.TTF';
 }
