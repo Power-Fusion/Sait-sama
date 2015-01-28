@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Sait-sama
-// @version     2.1.7
+// @version     2.1.8
 // @namespace   Power-Fusion
 // @description Sait Login Weab
 // @match       https://learn.sait.ca/
@@ -49,10 +49,10 @@ catch(e) { }
 
 //--- Image urls to be randomized. Maybe Ill find a way to lable them, and size better.
 var images = ['http://a.pomf.se/whovbh.png', 
-        'http://safebooru.org//images/1107/913229aa395f58bc2ec16c0152b0b67ded3a3384.png?1149712',
-        'http://safebooru.org//images/1089/34a5d6c7b65b9a85667656abb8e205b2f30f618f.png?1129949',
+        'http://a.pomf.se/mnfidj.png',
+        'http://a.pomf.se/dfowew.png',
         'http://a.pomf.se/f686b.png',
-        'http://safebooru.org//images/1064/0f9948f269fc914c516a97a741e4a5eebd5e3d41.png?1102095',
+        'http://a.pomf.se/zszacg.png',
         'https://i.minus.com/i0v2fCxA6msfB.png',
         'http://a.pomf.se/yvnjgg.png',
         'http://a.pomf.se/yvnjgg.png',
@@ -83,7 +83,7 @@ var images = ['http://a.pomf.se/whovbh.png',
         'http://a.pomf.se/wrkwmo.png',
         'http://a.pomf.se/pwfvlg.png',
         'http://a.pomf.se/ykcohx.png',
-        'http://safebooru.org//images/1054/3692147a775a82873a0e7dce1809e99a7f8ebe5f.png?1092402'];
+        'http://a.pomf.se/gukssw.png'];
 
 //--- Titles to be randomized
 var titles = ['Be Gentle',
