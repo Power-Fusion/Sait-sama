@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Sait-sama
-// @version     2.1.6b
+// @version     2.1.7
 // @namespace   Power-Fusion
 // @description Sait Login Weab
 // @match       https://learn.sait.ca/
