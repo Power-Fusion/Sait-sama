@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        Sait-sama
-// @version     2.1.4
+// @version     2.1.5
 // @namespace   Power-Fusion
 // @description Sait Login Weab
 // @match       https://learn.sait.ca/
@@ -9,6 +9,8 @@
 // @updateURL   https://raw.githubusercontent.com/Power-Fusion/Sait-sama/master/Sait-sama.meta.js
 // @downloadURL https://raw.githubusercontent.com/Power-Fusion/Sait-sama/master/Sait-sama.user.js
 // @icon        http://a.pomf.se/tdslwk.png
+// @grant       GM_getValue
+// @grant       GM_setValue
 // ==/UserScript==
 
 /*
@@ -25,6 +27,18 @@
 * So to see the correct font, download it
 * https://a.pomf.se/na3ce.TTF
 */
+
+// Run once per install font checker. Sorry I can't think of a better way to do this.
+var alreadyRun = GM_getValue ("alreadyRun",  false);
+if ( ! alreadyRun) {
+    GM_setValue ("alreadyRun", true);
+    var fonter = doesFontExist("kroeger 05_55");
+    if(fonter == true){
+    alert ("kroeger 05_55 Font is missing!\nPlease install it first!\nPress okay to load the font.");
+    window.location.href='https://a.pomf.se/na3ce.TTF';
+    }
+}
+
 //--- Redirect fix
 if(window.location.href.match(/[?]/)){
     window.location.href = "https://learn.sait.ca/";
@@ -43,10 +57,10 @@ catch(e) { }
 
 //--- Image urls to be randomized. Maybe Ill find a way to lable them, and size better.
 var images = ['http://a.pomf.se/whovbh.png', 
-			  'http://safebooru.org//images/1107/913229aa395f58bc2ec16c0152b0b67ded3a3384.png?1149712',
-			  'http://safebooru.org//images/1089/34a5d6c7b65b9a85667656abb8e205b2f30f618f.png?1129949',
-			  'http://a.pomf.se/f686b.png',
-			  'http://safebooru.org//images/1064/0f9948f269fc914c516a97a741e4a5eebd5e3d41.png?1102095',
+        'http://safebooru.org//images/1107/913229aa395f58bc2ec16c0152b0b67ded3a3384.png?1149712',
+        'http://safebooru.org//images/1089/34a5d6c7b65b9a85667656abb8e205b2f30f618f.png?1129949',
+        'http://a.pomf.se/f686b.png',
+        'http://safebooru.org//images/1064/0f9948f269fc914c516a97a741e4a5eebd5e3d41.png?1102095',
         'https://i.minus.com/i0v2fCxA6msfB.png',
         'http://a.pomf.se/yvnjgg.png',
         'http://a.pomf.se/yvnjgg.png',
@@ -77,7 +91,7 @@ var images = ['http://a.pomf.se/whovbh.png',
         'http://a.pomf.se/wrkwmo.png',
         'http://a.pomf.se/pwfvlg.png',
         'http://a.pomf.se/ykcohx.png',
-			  'http://safebooru.org//images/1054/3692147a775a82873a0e7dce1809e99a7f8ebe5f.png?1092402'];
+        'http://safebooru.org//images/1054/3692147a775a82873a0e7dce1809e99a7f8ebe5f.png?1092402'];
 
 //--- Titles to be randomized
 var titles = ['Be Gentle',
@@ -156,11 +170,11 @@ document.title = String(titles[Math.floor(Math.random() * titles.length)]);
 var stylesheet = document.createElement("style");
 stylesheet.type = "text/css";
 if (stylesheet.styleSheet) {
-	stylesheet.styleSheet.cssText = css;
-	} 
-	else {
-	stylesheet.appendChild(document.createTextNode(css));
-	}
+  stylesheet.styleSheet.cssText = css;
+  } 
+  else {
+  stylesheet.appendChild(document.createTextNode(css));
+  }
 (document.head || document.getElementsByTagName("head")[0]).appendChild(stylesheet);
 
 //--- Add placeholders to the input bars AFTER domload
@@ -175,4 +189,21 @@ function insertData() {
     if (pas) {
       pas.placeholder = 'Password';
   }
+}
+
+//Font Checker by kirupa 
+function doesFontExist(fontName) {
+    var canvas = document.createElement("canvas");
+    var context = canvas.getContext("2d");
+    var text = "abcdefghijklmnopqrstuvwxyz0123456789";
+    context.font = "72px monospace";
+    var baselineSize = context.measureText(text).width;
+    context.font = "72px '" + fontName + "', monospace";
+    var newSize = context.measureText(text).width;
+    delete canvas;
+    if (newSize == baselineSize) {
+        return false;
+    } else {
+        return true;
+    }
 }
